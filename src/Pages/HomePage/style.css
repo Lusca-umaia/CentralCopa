@@ -1,0 +1,35 @@
+main {
+  width: 90%;
+  margin: 50px auto;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.boxCountry {
+  display: flex;
+  width: 350px;
+  border-radius: 15px;
+  padding: 40px;
+  gap: 4%;
+  justify-content: center;
+  background-color: #eee;
+  align-items: center;
+}
+
+.boxCountry img {
+  border-radius: 8%;
+  width: 10em;
+}
+
+.boxCountry h3 {
+  font-size: 2em;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  color: #fff;
+  background-color: #042940;
+}
