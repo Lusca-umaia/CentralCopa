@@ -1,0 +1,21 @@
+main {
+  margin-top: 1rem;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+form > input {
+  width: 15vw;
+  outline: none;
+  border-radius: 6px;
+}
+form > label {
+  font-size: 22px;
+  margin: 0.5rem 0;
+}
