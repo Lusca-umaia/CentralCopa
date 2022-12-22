@@ -54,13 +54,17 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.game {
+.game,
+.gameNone {
   width: 10vw;
   height: 10vh;
   padding-top: 1rem;
   border-radius: 8px;
   text-align: center;
   background: #d9d9d9;
+}
+.gameNone {
+  display: none;
 }
 .moreAboutTheGames {
   display: flex;
@@ -83,6 +87,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .Finalgame {
   width: 10vw;
@@ -91,4 +96,10 @@ body {
   border-radius: 8px;
   text-align: center;
   background: #d9d9d9;
+}
+@media (max-width: 800px) {
+  .navegationGames {
+    flex-direction: column;
+    margin-bottom: 8rem;
+  }
 }
