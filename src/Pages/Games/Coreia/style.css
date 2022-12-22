@@ -97,3 +97,9 @@ body {
   text-align: center;
   background: #d9d9d9;
 }
+@media (max-width: 800px) {
+  .navegationGames {
+    flex-direction: column;
+    margin-bottom: 8rem;
+  }
+}
