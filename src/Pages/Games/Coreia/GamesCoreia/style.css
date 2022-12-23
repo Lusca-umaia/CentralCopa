@@ -6,6 +6,9 @@
 body {
   background: #eeeeee;
 }
+p {
+  word-wrap: break-word;
+}
 .navegationGames {
   height: 20vh;
   margin: 2rem 5rem;
