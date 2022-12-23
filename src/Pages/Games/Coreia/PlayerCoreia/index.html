@@ -1,96 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="../../../../Styles/navBarStyle.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <nav>
-      <div class="agroupNav">
-        <img src="../../../../assets/logoFlit.png" alt="" height="60px" />
-        <div class="menu" id="menuu">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogadores</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../../../../Styles/navBarStyle.css">
+</head>
+
+<body>
+  <nav>
+    <div class="agroupNav">
+      <img src="../../img/logoFlit.png" alt="" height="60px" />
+      <div class="menu" id="menuu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="Direc" id="direc">
+      <a href="">Home</a>
+      <a href="">Jogos</a>
+      <a href="">Cadastrar</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="ContainerTeam">
+      <img class="Flag" src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" width="220px"
+        height="220px">
+      <h1>Coreia</h1>
+    </div>
+
+    <section class="ContainerInputs">
+      <h2>Atacantes</h2>
+
+      <div class="ContainerFilter">
+        <h3>Filtrar por idade</h3>
+
+        <div class="ContainerInputsText">
+          <div>
+            <h4>Idade Minima</h4>
+            <input class="MinimumAge" type="text">
+          </div>
+
+          <div>
+            <h4>Idade Máxima</h4>
+            <input class="MaxAge" type="text">
+          </div>
         </div>
       </div>
-      <div class="Direc" id="direc">
-        <a href="">Home</a>
-        <a href="">Jogos</a>
-        <a href="">Cadastrar</a>
-      </div>
-    </nav>
-    <main>
-      <section class="countryInformation">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg"
-        />
-        <h1>Coreia</h1>
-      </section>
-      <section class="positionPlayer">
-        <div class="box-playerFlter">
-          <p>Filtro por Idade</p>
-          <form class="playerFilter">
-            <label for="minimumAge">Idade Minima</label>
-            <input id="minimumAge" type="number" />
-            <label for="maximumAge">Idade Maxima</label>
-            <input id="maximumAge" type="number" />
-          </form>
-        </div>
-      </section>
-      <section class="playerInformation">
-        <h1>Posição do Jogadores</h1>
-        <div class="players">
-          <img
-            src="https://raw.githubusercontent.com/Gabriel-Uchoa/Flitdex/master/assets/setaEsquerda.png"
-            id="arrowRight"
-          />
-          <div class="player">
-            <img
-              id="imgPlayer"
-              src="https://static.gazetaesportiva.com/uploads/imagem/2018/07/13/000_1782Z7-1024x683.jpg"
-              alt=""
-            />
-            <h1 id="namePlayer">Nome</h1>
-            <p id="agePlayer">Idade</p>
-          </div>
-          <div class="player">
-            <img
-              id="imgPlayer"
-              src="https://static.gazetaesportiva.com/uploads/imagem/2018/07/13/000_1782Z7-1024x683.jpg"
-              alt=""
-            />
-            <h1 id="namePlayer">Nome</h1>
-            <p id="agePlayer">Idade</p>
-          </div>
-          <div class="player">
-            <img
-              id="imgPlayer"
-              src="https://static.gazetaesportiva.com/uploads/imagem/2018/07/13/000_1782Z7-1024x683.jpg"
-              alt=""
-            />
-            <h1 id="namePlayer">Nome</h1>
-            <p id="agePlayer">Idade</p>
-          </div>
-          <div class="player">
-            <img
-              id="imgPlayer"
-              src="https://static.gazetaesportiva.com/uploads/imagem/2018/07/13/000_1782Z7-1024x683.jpg"
-              alt=""
-            />
-            <h1 id="namePlayer">Nome</h1>
-            <p id="agePlayer">Idade</p>
-          </div>
-          <img
-            src="https://raw.githubusercontent.com/Gabriel-Uchoa/Flitdex/master/assets/setaDireita.png"
-            id="arrowLeft"
-          />
-        </div>
-      </section>
-    </main>
-  </body>
+    </section>
+
+    <section class="Players">
+    </section>
+
+    <button class="RightArrow None">
+      <img height="70"
+        src="https://raw.githubusercontent.com/ruandqm/cup-center/GabrielSantana/src/assets/seta-direita.png" alt="">
+    </button>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+
 </html>
