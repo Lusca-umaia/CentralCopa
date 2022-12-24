@@ -1,21 +1,47 @@
+* {
+  font-weight: bold;
+}
+
 main {
   margin-top: 1rem;
-  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
+
 form {
   display: flex;
+  width: 100%;
+  align-items: center;
   flex-direction: column;
 }
-form > input {
-  width: 15vw;
+
+form>input {
+  margin: 0 auto;
+  width: 40%;
+  padding: 10px;
   outline: none;
   border-radius: 6px;
 }
-form > label {
+
+form>label {
+  margin: 0 auto;
   font-size: 22px;
-  margin: 0.5rem 0;
+  margin-top: 15px;
+}
+
+.inputButton {
+  cursor: pointer;
+  border: 2px solid #042940;
+  margin: 20px 0;
+  background-color: transparent;
+  color: black;
+  transition: 1s all;
+}
+
+.inputButton:hover {
+  color: white;
+  transform: scale(1.05);
+  background-color: #042940;
 }

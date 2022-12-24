@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../Styles/navBarStyle.css" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <nav>
-      <div class="agroupNav">
-        <img src="../../img/logoFlit.png" alt="" height="60px" />
-        <div class="menu" id="menuu">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../Styles/navBarStyle.css" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <nav>
+    <div class="agroupNav">
+      <img src="../../assets/logoFlit.png" alt="" height="60px" />
+      <div class="menu" id="menuu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
       </div>
-      <div class="Direc" id="direc">
-        <a href="">Home</a>
-        <a href="">Jogos</a>
-        <a href="">Cadastrar</a>
-      </div>
-    </nav>
-    <main>
-      <form action="">
-        <label for="namePlayer">Nome:</label>
-        <input id="namePlayer" type="text" placeholder="Nome" />
-        <label for="yearPlayer">Idade:</label>
-        <input id="yearPlayer" type="number" placeholder="" />
-        <label for="urlImagePlayer">Imagem:</label>
-        <input id="urlImagePlayer" type="text" />
-      </form>
-      <button id="submitButton" type="submit">Enviar</button>
-    </main>
-    <script src="script.js"></script>
-  </body>
+    </div>
+    <div class="Direc" id="direc">
+      <a href="../HomePage/index.html">Home</a>
+      <a href="../Games/Coreia/GamesCoreia/index.html">Jogos</a>
+      <a href="./index.html">Cadastrar</a>
+    </div>
+  </nav>
+  <h1 id="textPrinc">Cadastrar Jogadores</h1>
+  <main>
+    <form action="">
+      <label for="namePlayer">Nome:</label>
+      <input class="inputStyle" id="namePlayer" type="text" placeholder="Lionel Messi" />
+      <label for="yearPlayer">Idade:</label>
+      <input class="inputStyle" id="yearPlayer" type="number" placeholder="24" />
+      <label for="urlImagePlayer">Imagem:</label>
+      <input class="inputStyle" id="urlImagePlayer" type="text" placeholder="https:...." />
+      <label for="Selecao">Seleção:</label>
+      <input class="inputStyle" id="Selecao" type="text" placeholder="Argentina" />
+      <label for="Posicao">Posição:</label>
+      <input class="inputStyle" id="Posicao" type="text" placeholder="Atacante" />
+      <input class="inputButton" type="submit" value="Enviar" id="sub">
+    </form>
+  </main>
+  <script src="./post.js"></script>
+</body>
+
 </html>

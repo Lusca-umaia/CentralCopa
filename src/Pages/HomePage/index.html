@@ -1,70 +1,48 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="../../Styles/navBarStyle.css" />
-  </head>
 
-  <body>
-    <nav>
-      <div class="agroupNav">
-        <img src="../../img/logoFlit.png" alt="" height="60px" />
-        <div class="menu" id="menuu">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </div>
-      <div class="Direc" id="direc">
-        <a href="">Home</a>
-        <a href="">Jogos</a>
-        <a href="">Cadastrar</a>
-      </div>
-    </nav>
-    <main>
-      <div class="boxCountry">
-        <img
-          src="https://imagepng.org/wp-content/uploads/2017/04/bandeira-do-brasil.png"
-          alt=""
-        />
-        <h3>Brasil</h3>
-      </div>
-      <div class="boxCountry">
-        <img
-          src="https://imagepng.org/wp-content/uploads/2017/04/bandeira-do-brasil.png"
-          alt=""
-        />
-        <h3>Brasil</h3>
-      </div>
-      <div class="boxCountry">
-        <img
-          src="https://imagepng.org/wp-content/uploads/2017/04/bandeira-do-brasil.png"
-          alt=""
-        />
-        <h3>Brasil</h3>
-      </div>
-    </main>
-    <footer>
-      <h3>@Todos os direitos reservados a equipe</h3>
-    </footer>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="../../Styles/navBarStyle.css" />
+</head>
 
-    <script>
-      let menu = document.getElementById("menuu");
-      let direc = document.getElementById("direc");
-      let control = 0;
+<body>
+  <nav id="nav">
+    <div class="agroupNav">
+      <img src="../../assets/logoFlit.png" alt="" height="60px" />
+      <div class="menu" id="menuu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="Direc" id="direc">
+      <a href="./index.html">Home</a>
+      <a href="../Games/Coreia/GamesCoreia/index.html">Jogos</a>
+      <a href="../RegisterPlayer/index.html">Cadastrar</a>
+    </div>
+  </nav>
+  <main>
+    <a href="../Games/Coreia/GamesCoreia/index.html">
+      <div class="boxCountry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" alt="" />
+        <h3>Coréia</h3>
+      </div>
+    </a>
+    <a href="../Games/Argentina/index.html">
+      <div class="boxCountry">
+        <img src="https://imagepng.org/wp-content/uploads/2017/10/bandeira-argentina.png" alt="" />
+        <h3>Argentina</h3>
+      </div>
+    </a>
+  </main>
+  <footer>
+    <h3>@Todos os direitos reservados a equipe</h3>
+  </footer>
+  <script src="../../JS/Nav.js"></script>
+</body>
 
-      menu.addEventListener("click", function () {
-        if (control == 0) {
-          direc.style.display = "flex";
-          control = 1;
-        } else {
-          direc.style.display = "";
-          control = 0;
-        }
-      });
-    </script>
-  </body>
 </html>

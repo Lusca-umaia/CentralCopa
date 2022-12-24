@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
+* {
+    font-family: Sora;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.inputBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.styleSection {
+    position: relative;
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px auto;
+    align-items: center;
+}
+
+.groupSele {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.groupSele>img {
+    border-radius: 15px;
+}
+
+.containerOne {
+    display: flex;
+    gap: 5px;
+    margin: 20px 0;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Idade {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.groupInput {
+    gap: 20px;
+    display: flex;
+}
+
+#ContSlider {
+    width: 290px;
+    display: flex;
+    cursor: pointer;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.styleGroup {
+    display: flex;
+    align-items: center;
+    transition: 1.5s all;
+    transform: translateX(00px);
+}
+
+
+.BoxPlayers {
+    display: flex;
+    border-radius: 20px;
+    padding: 20px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #eee;
+}
+
+.BoxPlayers>img {
+    border-radius: 20px;
+    width: 250px !important;
+    height: 250px !important;
+}
+
+.ret {
+    position: absolute;
+    padding: 5px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    top: 50%;
+    left: -20%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.ret span {
+    font-size: 50px;
+    color: transparent;
+    transition: 0.4s all;
+}
+
+.ret span:hover {
+    color: black;
+    transform: scale(1.5);
+    font-size: 50px;
+}
+
+.avan span {
+    color: transparent;
+    transition: 0.4s all;
+    font-size: 50px;
+}
+
+
+.avan span:hover {
+    transform: scale(1.5);
+    color: black;
+    font-size: 50px;
+}
+
+.avan {
+    position: absolute;
+    padding: 5px;
+    top: 50%;
+    right: -25%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 6;
+}

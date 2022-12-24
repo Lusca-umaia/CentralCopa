@@ -1,8 +1,19 @@
+body {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+}
+
 main {
   width: 90%;
   margin: 50px auto;
   justify-content: center;
-  gap: 20px;
+  gap: 40px;
   flex-wrap: wrap;
   display: flex;
 }
@@ -16,6 +27,7 @@ main {
   justify-content: center;
   background-color: #eee;
   align-items: center;
+  transition: 1s all;
 }
 
 .boxCountry img {
@@ -23,7 +35,12 @@ main {
   width: 10em;
 }
 
+.boxCountry:hover {
+  transform: scale(1.1);
+}
+
 .boxCountry h3 {
+  color: #000;
   font-size: 2em;
 }
 
