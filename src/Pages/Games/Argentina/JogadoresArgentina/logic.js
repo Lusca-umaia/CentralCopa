@@ -1,4 +1,15 @@
-function geral() {
+let idadeMi = document.getElementById('idadaMi')
+let idadeMax = document.getElementById('idadeMax')
+
+idadeMi.addEventListener('blur', function () {
+    geral(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
+})
+
+idadeMax.addEventListener('blur', function () {
+    geral(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
+})
+
+function geral(Remov, idadeMin, idadeMa) {
     fetch('https://apigenerator.dronahq.com/api/Ky18EWHd/Jogadores')
         .then(function (reponse) {
             return reponse.json()
@@ -8,26 +19,42 @@ function geral() {
         })
 
     function Jogadores(data) {
-        //Filtrar apenas os jogadores da Argentina
-        let jogadores = data.filter(item => item.Selecao == "Argentina")
-        // --
+        if (Remov != 0) {
+            removed()
+        }
 
-        //Filtrar Jogadores a partir das suas posições
-        let Ata = jogadores.filter(item => item.posicao == "atacante")
-        let Def = jogadores.filter(item => item.posicao == "defensor")
-        let mc = jogadores.filter(item => item.posicao == "meio-campista")
-        let gole = jogadores.filter(item => item.posicao == "goleiro")
-        // --
+        if (idadeMin < idadeMa) {
+            //Filtrar apenas os jogadores da Argentina
+            let jogadores = data.filter(item => item.Selecao == "Argentina")
+            // --
 
-        //Gerar as seções com as informações dos respectivos jogadores e posições
-        generate('QuantAta', Ata, document.getElementById('groupSlides'))
-        generate('QuantDef', Def, document.getElementById('groupSlidesTwo'))
-        generate('QuantMc', mc, document.getElementById('groupSlidesThree'))
-        generate('Quantgole', gole, document.getElementById('groupSlidesFour'))
-        // --
+            jogadores = jogadores.filter(item => item.idade >= idadeMin && item.idade <= idadeMa)
+
+            //Filtrar Jogadores a partir das suas posições
+            let Ata = jogadores.filter(item => item.posicao == "atacante")
+            let Def = jogadores.filter(item => item.posicao == "defensor")
+            let mc = jogadores.filter(item => item.posicao == "meio-campista")
+            let gole = jogadores.filter(item => item.posicao == "goleiro")
+            // --
+
+            //Gerar as seções com as informações dos respectivos jogadores e posições
+            generate('QuantAta', Ata, document.getElementById('groupSlides'))
+            generate('QuantDef', Def, document.getElementById('groupSlidesTwo'))
+            generate('QuantMc', mc, document.getElementById('groupSlidesThree'))
+            generate('Quantgole', gole, document.getElementById('groupSlidesFour'))
+            // --
+        }
+
+        else if (idadeMin > idadeMa) {
+            alert('Idade Mínima está acima da Idade Máxima - Idade máxima por padrão é 100')
+            geral(0, 0, 100)
+            idadeMi.value = 0
+            idadeMax.value = 100
+        }
+
     }
 }
-geral()
+geral(0, 0, 100)
 
 //Função para gerar as boxs de cada jogador com suas respectivas informações
 function generate(quant, pos, section) {
@@ -50,3 +77,11 @@ function generate(quant, pos, section) {
     }
 }
 // --
+
+function removed() {
+    TotalPlayers = document.getElementsByClassName('BoxPlayers')
+    for (let index = 0; index < TotalPlayers.length; index++) {
+        TotalPlayers[index].remove()
+        index--
+    }
+}
