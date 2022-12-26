@@ -1,4 +1,3 @@
-let inputChe = document.getElementsByClassName('inputChe')
 let nome = document.getElementById('namePlayer')
 let idade = document.getElementById('yearPlayer')
 let url = document.getElementById('urlImagePlayer')

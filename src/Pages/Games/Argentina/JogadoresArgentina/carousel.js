@@ -1,71 +1,69 @@
+// Quantidade de Jogadores por posição
+let quantAta = document.getElementsByClassName('QuantAta')
+let quantDef = document.getElementsByClassName('QuantDef')
+let QuantMc = document.getElementsByClassName('QuantMc')
+let QuantGole = document.getElementsByClassName('Quantgole')
+// --
 
-        let quantAta = document.getElementsByClassName('QuantAta')
-        let quantDef = document.getElementsByClassName('QuantDef')
-        let QuantMc = document.getElementsByClassName('QuantMc')
-        let QuantGole = document.getElementsByClassName('Quantgole')
-        console.log(QuantGole)
-        let controlAta = 0, controlDef = 0, controlMc = 0, controlGol = 0
+//Armazenamento dos controles do carousel
+localStorage.setItem("controlAta", 0)
+localStorage.setItem("controlDef", 0)
+localStorage.setItem("controlMc", 0)
+localStorage.setItem("QuantGole", 0)
+// --
 
-        document.getElementById('avanAta').addEventListener('click', function () {
-            controlAta += 1
-            if (controlAta > quantAta.length - 1) {
-                controlAta = 0
-            }
-            document.getElementById('groupSlides').style.transform = `translateX(${controlAta * (-290)}px)`
-        })
+//Chamando as funções de acordo com a categoria
+document.getElementById('avanAta').addEventListener('click', function () {
+    Avan("controlAta", quantAta, 'groupSlides')
+})
 
-        document.getElementById('retAta').addEventListener('click', function () {
-            controlAta -= 1
-            if (controlAta < 0) {
-                controlAta = quantAta.length - 1
-            }
-            document.getElementById('groupSlides').style.transform = `translateX(${controlAta * (-290)}px)`
-        })
+document.getElementById('retAta').addEventListener('click', function () {
+    ret("controlAta", quantAta, 'groupSlides')
+})
 
-        document.getElementById('avanDef').addEventListener('click', function () {
-            controlDef += 1
-            if (controlDef > quantDef.length - 1) {
-                controlDef = 0
-            }
-            document.getElementById('groupSlidesTwo').style.transform = `translateX(${controlDef * (-290)}px)`
-        })
+document.getElementById('avanDef').addEventListener('click', function () {
+    Avan("controlDef", quantDef, 'groupSlidesTwo')
+})
 
-        document.getElementById('retDef').addEventListener('click', function () {
-            controlDef -= 1
-            if (controlDef < 0) {
-                controlDef = quantDef.length - 1
-            }
-            document.getElementById('groupSlidesTwo').style.transform = `translateX(${controlDef * (-290)}px)`
-        })
+document.getElementById('retDef').addEventListener('click', function () {
+    ret("controlDef", quantDef, 'groupSlidesTwo')
+})
 
-        document.getElementById('avanMc').addEventListener('click', function () {
-            controlMc += 1
-            if (controlMc > QuantMc.length - 1) {
-                controlMc = 0
-            }
-            document.getElementById('groupSlidesThree').style.transform = `translateX(${controlMc * (-290)}px)`
-        })
+document.getElementById('avanMc').addEventListener('click', function () {
+    Avan("controlMc", QuantMc, 'groupSlidesThree')
+})
 
-        document.getElementById('retMc').addEventListener('click', function () {
-            controlMc -= 1
-            if (controlMc < 0) {
-                controlMc = QuantMc.length - 1
-            }
-            document.getElementById('groupSlidesThree').style.transform = `translateX(${controlMc * (-290)}px)`
-        })
+document.getElementById('retMc').addEventListener('click', function () {
+    ret("controlMc", QuantMc, 'groupSlidesThree')
+})
 
-        document.getElementById('avanGole').addEventListener('click', function () {
-            controlGol += 1
-            if (controlGol > QuantGole.length - 1) {
-                controlGol = 0
-            }
-            document.getElementById('groupSlidesFour').style.transform = `translateX(${controlGol * (-290)}px)`
-        })
+document.getElementById('avanGole').addEventListener('click', function () {
+    Avan("QuantGole", QuantGole, 'groupSlidesFour')
+})
 
-        document.getElementById('retGole').addEventListener('click', function () {
-            controlGol -= 1
-            if (controlGol < 0) {
-                controlGol = QuantGole.length - 1
-            }
-            document.getElementById('groupSlidesFour').style.transform = `translateX(${controlGol * (-290)}px)`
-        })
+document.getElementById('retGole').addEventListener('click', function () {
+    ret("QuantGole", QuantGole, 'groupSlidesFour')
+})
+// --
+
+//Função "Avançar" - carousel
+function Avan(control, quant, local) {
+    let contable = parseInt(localStorage.getItem(control)) + 1
+    localStorage.setItem(control, contable)
+    if (localStorage.getItem(control) > quant.length - 1) {
+        localStorage.setItem(control, 0)
+    }
+    document.getElementById(local).style.transform = `translateX(${localStorage.getItem(control) * (-290)}px)`
+}
+// --
+
+//Função "Retornar" - carousel
+function ret(control, quant, local) {
+    let contable = parseInt(localStorage.getItem(control)) - 1
+    localStorage.setItem(control, contable)
+    if (localStorage.getItem(control) < 0) {
+        localStorage.setItem(control, quant.length - 1)
+    }
+    document.getElementById(local).style.transform = `translateX(${localStorage.getItem(control) * (-290)}px)`
+}
+// --
