@@ -7,21 +7,17 @@ fetch('https://apigenerator.dronahq.com/api/zs9PYAhn/jogos')
         Jogos(data, "Argentina")
     });
 
-
-
 function Jogos(Dados, time) {
     const cont = document.getElementById('cont')
     const classi = document.getElementById('classi')
     let filterOne = Dados.filter(item => item.timeA == time)
     let filterTwo = Dados.filter(item => item.timeB == time)
 
-    console.log(Dados)
     for (let index = 0; index < filterTwo.length; index++) {
         filterOne.push(filterTwo[index])
     }
 
     let classifi = filterOne.filter(item => item.fase == "Classificatória")
-    console.log(filterOne)
 
     Classi(classifi, classi)
 
@@ -113,7 +109,7 @@ let Button = document.getElementById('Button')
 let controle_ = 0
 Button.addEventListener('click', function () {
     if (controle_ == 0) {
-        document.getElementById('contCollaps').style.display = "flex"
+        document.getElementById('contCollaps').style.display = "flex", 2000
         Button.innerText = "Ver Menos"
         controle_ = 1
     }

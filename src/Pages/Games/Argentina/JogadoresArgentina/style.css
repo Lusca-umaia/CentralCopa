@@ -32,12 +32,14 @@ main {
     gap: 4px;
 }
 
+
 .groupSele>img {
     border-radius: 15px;
 }
 
 .containerOne {
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
     margin: 20px 0;
     gap: 40px;
@@ -57,18 +59,23 @@ main {
 }
 
 #ContSlider {
-    width: 290px;
+    width: 70vw;
     display: flex;
     cursor: pointer;
     margin: 0 auto;
-    overflow: hidden;
+    scroll-behavior: smooth;
+    overflow-x: scroll;
+}
+
+#ContSlider::-webkit-scrollbar {
+    display: none;
 }
 
 .styleGroup {
     display: flex;
+    gap: 30px;
     align-items: center;
     transition: 1.5s all;
-    transform: translateX(00px);
 }
 
 
@@ -81,12 +88,17 @@ main {
     align-items: center;
     flex-direction: column;
     background-color: #eee;
+    transition: 1s all;
 }
 
 .BoxPlayers>img {
     border-radius: 20px;
     width: 250px !important;
     height: 250px !important;
+}
+
+.BoxPlayers:hover {
+    transform: scale(1.07);
 }
 
 .ret {
@@ -96,7 +108,7 @@ main {
     background-color: transparent;
     border: none;
     top: 50%;
-    left: -20%;
+    left: -10%;
     cursor: pointer;
     z-index: 2;
 }
@@ -130,7 +142,7 @@ main {
     position: absolute;
     padding: 5px;
     top: 50%;
-    right: -25%;
+    right: -10%;
     background-color: transparent;
     border: none;
     outline: none;

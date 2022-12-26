@@ -110,6 +110,7 @@ body {
     gap: 20px;
     flex-direction: column;
     border-radius: 20px;
+    transition: 1s all;
     background-color: #fff;
     align-items: center;
     justify-content: center;
@@ -159,4 +160,16 @@ body {
 #Button:hover {
     background-color: transparent;
     color: black;
+}
+
+@media (max-width: 800px) {
+    .campNav {
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+    }
+
+    #classi {
+        width: 90%;
+    }
 }

@@ -1,69 +1,45 @@
-// Quantidade de Jogadores por posição
-let quantAta = document.getElementsByClassName('QuantAta')
-let quantDef = document.getElementsByClassName('QuantDef')
-let QuantMc = document.getElementsByClassName('QuantMc')
-let QuantGole = document.getElementsByClassName('Quantgole')
-// --
-
-//Armazenamento dos controles do carousel
-localStorage.setItem("controlAta", 0)
-localStorage.setItem("controlDef", 0)
-localStorage.setItem("controlMc", 0)
-localStorage.setItem("QuantGole", 0)
-// --
-
 //Chamando as funções de acordo com a categoria
 document.getElementById('avanAta').addEventListener('click', function () {
-    Avan("controlAta", quantAta, 'groupSlides')
+    Avan(0)
 })
 
 document.getElementById('retAta').addEventListener('click', function () {
-    ret("controlAta", quantAta, 'groupSlides')
+    ret(0)
 })
 
 document.getElementById('avanDef').addEventListener('click', function () {
-    Avan("controlDef", quantDef, 'groupSlidesTwo')
+    Avan(1)
 })
 
 document.getElementById('retDef').addEventListener('click', function () {
-    ret("controlDef", quantDef, 'groupSlidesTwo')
+    ret(1)
 })
 
 document.getElementById('avanMc').addEventListener('click', function () {
-    Avan("controlMc", QuantMc, 'groupSlidesThree')
+    Avan(2)
 })
 
 document.getElementById('retMc').addEventListener('click', function () {
-    ret("controlMc", QuantMc, 'groupSlidesThree')
+    ret(2)
 })
 
 document.getElementById('avanGole').addEventListener('click', function () {
-    Avan("QuantGole", QuantGole, 'groupSlidesFour')
+    Avan(3)
 })
 
 document.getElementById('retGole').addEventListener('click', function () {
-    ret("QuantGole", QuantGole, 'groupSlidesFour')
+    ret(3)
 })
 // --
 
 //Função "Avançar" - carousel
-function Avan(control, quant, local) {
-    let contable = parseInt(localStorage.getItem(control)) + 1
-    localStorage.setItem(control, contable)
-    if (localStorage.getItem(control) > quant.length - 1) {
-        localStorage.setItem(control, 0)
-    }
-    document.getElementById(local).style.transform = `translateX(${localStorage.getItem(control) * (-290)}px)`
+function Avan(ind) {
+    document.getElementsByClassName('sliders')[ind].scrollLeft += 200
 }
 // --
 
 //Função "Retornar" - carousel
-function ret(control, quant, local) {
-    let contable = parseInt(localStorage.getItem(control)) - 1
-    localStorage.setItem(control, contable)
-    if (localStorage.getItem(control) < 0) {
-        localStorage.setItem(control, quant.length - 1)
-    }
-    document.getElementById(local).style.transform = `translateX(${localStorage.getItem(control) * (-290)}px)`
+function ret(ind) {
+    document.getElementsByClassName('sliders')[ind].scrollLeft -= 200
 }
 // --
