@@ -1,5 +1,5 @@
-let idadeMi = document.getElementById('idadaMi')
-let idadeMax = document.getElementById('idadeMax')
+var idadeMi = document.getElementById('idadaMi')
+var idadeMax = document.getElementById('idadeMax')
 
 idadeMi.addEventListener('blur', function () {
 
@@ -28,16 +28,16 @@ function
 
         if (idadeMin < idadeMa) {
 
-            let jogadores = data.filter(item => item.Selecao == "Coreia")
+            var jogadores = data.filter(item => item.Selecao == "Coreia")
 
 
             jogadores = jogadores.filter(item => item.idade >= idadeMin && item.idade <= idadeMa)
 
 
-            let Ata = jogadores.filter(item => item.posicao == "atacante")
-            let Def = jogadores.filter(item => item.posicao == "defensor")
-            let mc = jogadores.filter(item => item.posicao == "meio-campista")
-            let gole = jogadores.filter(item => item.posicao == "goleiro")
+            var Ata = jogadores.filter(item => item.posicao == "atacante")
+            var Def = jogadores.filter(item => item.posicao == "defensor")
+            var mc = jogadores.filter(item => item.posicao == "meio-campista")
+            var gole = jogadores.filter(item => item.posicao == "goleiro")
 
             generateBoxPlayer(Ata, document.getElementById('groupSlides'))
             generateBoxPlayer(Def, document.getElementById('groupSlidesTwo'))
@@ -61,10 +61,10 @@ generalInformation(0, 0, 100)
 
 function generateBoxPlayer(pos, section) {
     for (let index = 0; index < pos.length; index++) {
-        let Name = document.createElement('p')
-        let idade = document.createElement('p')
-        let Box = document.createElement('div')
-        let img = document.createElement('img')
+        var Name = document.createElement('p')
+        var idade = document.createElement('p')
+        var Box = document.createElement('div')
+        var img = document.createElement('img')
 
         Box.classList.add('BoxPlayers')
         img.setAttribute('src', pos[index].url_img);
