@@ -1,114 +1,88 @@
-var SectionPlayer = document.querySelector('.Players');
-var NextButton = document.querySelector('.RightArrow');
-var MinAgeInput = document.querySelector('.MinimumAge');
-var MaxAgeInput = document.querySelector('.MaxAge');
-var arrayPlayers = [];
-var nameArrayPlayers = [];
-SectionPlayer === null || SectionPlayer === void 0 ? void 0 : SectionPlayer.addEventListener('mouseover', function () {
-    NextButton === null || NextButton === void 0 ? void 0 : NextButton.classList.remove('None');
-});
-SectionPlayer === null || SectionPlayer === void 0 ? void 0 : SectionPlayer.addEventListener('mouseout', function () {
-    setTimeout(function () { return NextButton === null || NextButton === void 0 ? void 0 : NextButton.classList.add('None'); }, 10000);
-});
-NextButton === null || NextButton === void 0 ? void 0 : NextButton.addEventListener('click', function () {
-    fetch("")
-        .then(function (data) {
-        if (!data.ok) {
-            console.log(data);
-        }
-        return data.json();
-    })
-        .then(function (data) {
-        var newPlayersList = [];
-        var PlayerToBeRemove = document.querySelectorAll('.ContainerPlayer');
-        for (var index = 0; index < PlayerToBeRemove.length; index++) {
-            SectionPlayer === null || SectionPlayer === void 0 ? void 0 : SectionPlayer.removeChild(PlayerToBeRemove[index]);
-            arrayPlayers.shift();
-        }
-        data.map(function (item) {
-            if (nameArrayPlayers.includes(item.name) === false && item.name !== undefined) {
-                newPlayersList.push(item.name);
-                var CardPlayer = document.createElement('div');
-                CardPlayer.classList.add('ContainerPlayer');
-                var SrcPlayer = document.createElement('img');
-                SrcPlayer.src = item.urlImage;
-                SrcPlayer.width = 150;
-                CardPlayer.appendChild(SrcPlayer);
-                var NamePlayer = document.createElement('h4');
-                NamePlayer.textContent = item.name;
-                NamePlayer.classList.add('PlayerName');
-                CardPlayer.appendChild(NamePlayer);
-                var AgePlayer = document.createElement('p');
-                AgePlayer.textContent = item.year;
-                AgePlayer.classList.add('PlayerAge');
-                CardPlayer.appendChild(AgePlayer);
-                SectionPlayer === null || SectionPlayer === void 0 ? void 0 : SectionPlayer.appendChild(CardPlayer);
-                arrayPlayers.push(CardPlayer);
-            }
-        });
-    });
-});
-MinAgeInput === null || MinAgeInput === void 0 ? void 0 : MinAgeInput.addEventListener('blur', function () {
-    var arrayPlayersFiltered = arrayPlayers.filter(function (item) {
-        var _a, _b, _c;
-        if ((MaxAgeInput === null || MaxAgeInput === void 0 ? void 0 : MaxAgeInput.value) === '') {
-            return ((_a = item.lastChild) === null || _a === void 0 ? void 0 : _a.textContent) >= MinAgeInput.value;
-        }
-        return ((_b = item.lastChild) === null || _b === void 0 ? void 0 : _b.textContent) >= MinAgeInput.value && ((_c = item.lastChild) === null || _c === void 0 ? void 0 : _c.textContent) <= (MaxAgeInput === null || MaxAgeInput === void 0 ? void 0 : MaxAgeInput.value);
-    });
-    var PlayerToBeRemove = document.querySelectorAll('.ContainerPlayer');
-    for (var index = 0; index < PlayerToBeRemove.length; index++) {
-        SectionPlayer === null || SectionPlayer === void 0 ? void 0 : SectionPlayer.removeChild(PlayerToBeRemove[index]);
-    }
-    arrayPlayersFiltered.map(function (item) {
-        SectionPlayer === null || SectionPlayer === void 0 ? void 0 : SectionPlayer.appendChild(item);
-    });
-});
-MaxAgeInput === null || MaxAgeInput === void 0 ? void 0 : MaxAgeInput.addEventListener('blur', function () {
-    var arrayPlayersFiltered = arrayPlayers.filter(function (item) {
-        var _a, _b, _c;
-        if ((MaxAgeInput === null || MaxAgeInput === void 0 ? void 0 : MaxAgeInput.value) === '') {
-            return ((_a = item.lastChild) === null || _a === void 0 ? void 0 : _a.textContent) >= MinAgeInput.value;
-        }
-        return ((_b = item.lastChild) === null || _b === void 0 ? void 0 : _b.textContent) >= MinAgeInput.value && ((_c = item.lastChild) === null || _c === void 0 ? void 0 : _c.textContent) <= (MaxAgeInput === null || MaxAgeInput === void 0 ? void 0 : MaxAgeInput.value);
-    });
-    var PlayerToBeRemove = document.querySelectorAll('.ContainerPlayer');
-    for (var index = 0; index < PlayerToBeRemove.length; index++) {
-        SectionPlayer === null || SectionPlayer === void 0 ? void 0 : SectionPlayer.removeChild(PlayerToBeRemove[index]);
-    }
-    arrayPlayersFiltered.map(function (item) {
-        SectionPlayer === null || SectionPlayer === void 0 ? void 0 : SectionPlayer.appendChild(item);
-    });
-});
-fetch("")
-    .then(function (data) {
-    if (!data.ok) {
-        console.log(data);
-    }
-    return data.json();
+let idadeMi = document.getElementById('idadaMi')
+let idadeMax = document.getElementById('idadeMax')
+
+idadeMi.addEventListener('blur', function () {
+
+    generalInformation(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
 })
-    .then(function (data) {
-    data.map(function (item) {
-        if (item.id === 1) {
-            return;
+
+idadeMax.addEventListener('blur', function () {
+
+    generalInformation(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
+})
+
+function
+    generalInformation(Remov, idadeMin, idadeMa) {
+    fetch('https://apigenerator.dronahq.com/api/Ky18EWHd/Jogadores')
+        .then(function (reponse) {
+            return reponse.json()
+        })
+        .then(function (data) {
+            handlePlayerInformation(data)
+        })
+
+    function handlePlayerInformation(data) {
+        if (Remov != 0) {
+            removed()
         }
-        var CardPlayer = document.createElement('div');
-        CardPlayer.classList.add('ContainerPlayer');
-        var SrcPlayer = document.createElement('img');
-        SrcPlayer.src = item.urlImage;
-        SrcPlayer.width = 150;
-        CardPlayer.appendChild(SrcPlayer);
-        var NamePlayer = document.createElement('h4');
-        NamePlayer.textContent = item.name;
-        NamePlayer.classList.add('PlayerName');
-        CardPlayer.appendChild(NamePlayer);
-        var AgePlayer = document.createElement('p');
-        AgePlayer.textContent = item.year;
-        AgePlayer.classList.add('PlayerAge');
-        CardPlayer.appendChild(AgePlayer);
-        arrayPlayers.length < 5 && (arrayPlayers.push(CardPlayer), nameArrayPlayers.push(NamePlayer.textContent));
-        arrayPlayers.map(function (index) {
-            SectionPlayer === null || SectionPlayer === void 0 ? void 0 : SectionPlayer.appendChild(index);
-        });
-    });
-});
+
+        if (idadeMin < idadeMa) {
+
+            let jogadores = data.filter(item => item.Selecao == "Coreia")
+
+
+            jogadores = jogadores.filter(item => item.idade >= idadeMin && item.idade <= idadeMa)
+
+
+            let Ata = jogadores.filter(item => item.posicao == "atacante")
+            let Def = jogadores.filter(item => item.posicao == "defensor")
+            let mc = jogadores.filter(item => item.posicao == "meio-campista")
+            let gole = jogadores.filter(item => item.posicao == "goleiro")
+
+            generateBoxPlayer(Ata, document.getElementById('groupSlides'))
+            generateBoxPlayer(Def, document.getElementById('groupSlidesTwo'))
+            generateBoxPlayer(mc, document.getElementById('groupSlidesThree'))
+            generateBoxPlayer(gole, document.getElementById('groupSlidesFour'))
+
+        }
+
+        else if (idadeMin > idadeMa) {
+            alert('Idade Mínima está acima da Idade Máxima - Idade máxima por padrão é 100')
+
+            generalInformation(0, 0, 100)
+            idadeMi.value = 0
+            idadeMax.value = 100
+        }
+
+    }
+}
+
+generalInformation(0, 0, 100)
+
+function generateBoxPlayer(pos, section) {
+    for (let index = 0; index < pos.length; index++) {
+        let Name = document.createElement('p')
+        let idade = document.createElement('p')
+        let Box = document.createElement('div')
+        let img = document.createElement('img')
+
+        Box.classList.add('BoxPlayers')
+        img.setAttribute('src', pos[index].url_img);
+
+        Name.innerText = pos[index].nome
+        idade.innerText = pos[index].idade + " Anos"
+        Box.appendChild(img)
+        Box.appendChild(Name)
+        Box.appendChild(idade)
+        section.appendChild(Box)
+    }
+}
+
+
+function removed() {
+    TotalPlayers = document.getElementsByClassName('BoxPlayers')
+    for (let index = 0; index < TotalPlayers.length; index++) {
+        TotalPlayers[index].remove()
+        index--
+    }
+}

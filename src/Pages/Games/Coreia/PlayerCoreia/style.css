@@ -1,113 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
 * {
+  font-family: Sora;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 39rem;
-  padding: 2rem;
-  background-color: #042940;
-}
-
-header img {
-  object-fit: contain;
-}
-
-ul {
-  display: flex;
-  font-size: 1.2rem;
-  font-weight: 500;
-  gap: 2rem;
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-li {
-  text-decoration: none;
-  color: #FFF;
-}
-
-li:hover {
-  transition: .3s;
-  cursor: pointer;
-  color: rgb(78, 78, 78);
 }
 
 main {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+}
+
+.inputBox {
+  display: flex;
   flex-direction: column;
 }
 
-h2 {
-  margin-left: 20rem;
-}
-
-h3 {
-  margin-bottom: 1rem;
-}
-
-input {
-  margin-right: 2rem;
-  height: 1.5rem;
-}
-
-.Flag {
-  margin-right: 4rem;
-}
-
-.ContainerTeam {
+.styleSection {
+  position: relative;
+  font-size: 1.3em;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 3rem;
-}
-
-.ContainerInputs {
-  display: flex;
-  margin-top: 3rem;
-}
-
-.ContainerInputsText {
-  display: flex;
-}
-
-.ContainerFilter {
-  margin-left: 10rem;
-}
-
-.Players {
-  display: flex;
-  margin-top: 8rem;
-}
-
-.ContainerPlayer {
-  display: flex;
-  margin-right: 2rem;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
+  margin: 20px auto;
+  align-items: center;
+}
+
+.groupSele {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+.groupSele>img {
+  border-radius: 15px;
+}
+
+.containerOne {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 20px 0;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Idade {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.groupInput {
+  gap: 20px;
+  display: flex;
+}
+
+#ContSlider {
+  width: 70vw;
+  display: flex;
+  cursor: pointer;
+  margin: 0 auto;
+  scroll-behavior: smooth;
+  overflow-x: scroll;
+}
+
+#ContSlider::-webkit-scrollbar {
+  display: none;
+}
+
+.styleGroup {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  transition: 1.5s all;
+}
+
+
+.BoxPlayers {
+  display: flex;
+  border-radius: 20px;
+  padding: 20px;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: #eee;
-  padding: 1rem;
-  border-radius: 1rem;
+  transition: 1s all;
 }
 
-.RightArrow {
+.BoxPlayers>img {
+  border-radius: 20px;
+  width: 250px !important;
+  height: 250px !important;
+}
+
+.BoxPlayers:hover {
+  transform: scale(1.07);
+}
+
+.ret {
+  position: absolute;
+  padding: 5px;
+  outline: none;
   background-color: transparent;
   border: none;
-  margin-top: 2rem;
+  top: 50%;
+  left: -10%;
   cursor: pointer;
+  z-index: 2;
 }
 
-.None {
-  display: none;
+.ret span {
+  font-size: 50px;
+  color: transparent;
+  transition: 0.4s all;
+}
+
+.ret span:hover {
+  color: black;
+  transform: scale(1.5);
+  font-size: 50px;
+}
+
+.avan span {
+  color: transparent;
+  transition: 0.4s all;
+  font-size: 50px;
+}
+
+
+.avan span:hover {
+  transform: scale(1.5);
+  color: black;
+  font-size: 50px;
+}
+
+.avan {
+  position: absolute;
+  padding: 5px;
+  top: 50%;
+  right: -10%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 6;
 }

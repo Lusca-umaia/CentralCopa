@@ -1,4 +1,3 @@
-//Chamando as funções de acordo com a categoria
 document.getElementById('avanAta').addEventListener('click', function () {
     Avan(0)
 })
