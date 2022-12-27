@@ -1,3 +1,4 @@
+
 var idadeMi = document.getElementById('idadaMi');
 var idadeMax = document.getElementById('idadeMax');
 idadeMi.addEventListener('blur', function () {
