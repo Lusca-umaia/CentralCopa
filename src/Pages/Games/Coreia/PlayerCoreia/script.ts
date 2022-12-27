@@ -1,71 +1,74 @@
-let idadeMi = document.getElementById('idadaMi')
-let idadeMax = document.getElementById('idadeMax')
+const idadeMi = document.getElementById('idadaMi') as HTMLInputElement;
+const idadeMax = document.getElementById('idadeMax') as HTMLInputElement;
 
 idadeMi.addEventListener('blur', function () {
-    geral(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
+    information(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
 })
 
 idadeMax.addEventListener('blur', function () {
-    geral(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
+    information(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
 })
 
-function geral(Remov, idadeMin, idadeMa) {
+interface Players {
+    nome: string,
+    idade: number,
+    url_img: string,
+    Selecao: string,
+    posicao: string,
+}
+
+
+function information(Remov: number, idadeMin: number, idadeMa: number) {
     fetch('https://apigenerator.dronahq.com/api/Ky18EWHd/Jogadores')
         .then(function (reponse) {
             return reponse.json()
         })
         .then(function (data) {
-            handlePlayerInformation(data)
+            Jogadores(data)
         })
 
-    function handlePlayerInformation(data) {
+    function Jogadores(data: Players) {
         if (Remov != 0) {
             removed()
         }
 
-        if (idadeMin < idadeMa) {
-            interface infoPLaters {
-                nome: string,
-                idade: number,
-                url_img: string,
-                Selecao: string,
-                posicao: string,
-            }
-            let jogadores = data.filter((item: infoPLaters) => item.Selecao == "Coreia")
+        if (idadeMin < idadeMa && idadeMin != idadeMa) {
 
-
-            jogadores = jogadores.filter((item: infoPLaters) => item.idade >= ageMin && item.idade <= ageMax)
-
-
-            let ata = jogadores.filter((item: infoPLaters) => item.posicao == "atacante")
-            let def = jogadores.filter((item: infoPLaters) => item.posicao == "defensor")
-            let mc = jogadores.filter((item: infoPLaters) => item.posicao == "meio-campista")
-            let gol = jogadores.filter((item: infoPLaters) => item.posicao == "goleiro")
+            let jogadores = data.filter((item: Players) => item.Selecao == "Coreia")
 
 
 
-            generateBoxPlayer(ata, document.getElementById('groupSlides'))
-            generateBoxPlayer(def, document.getElementById('groupSlidesTwo'))
-            generateBoxPlayer(mc, document.getElementById('groupSlidesThree'))
-            generateBoxPlayer(gol, document.getElementById('groupSlidesFour'))
+            jogadores = jogadores.filter((item: Players) => item.idade >= idadeMin && item.idade <= idadeMa)
+
+
+            const Ata = jogadores.filter((item: Players) => item.posicao == "atacante")
+            const Def = jogadores.filter((item: Players) => item.posicao == "defensor")
+            const mc = jogadores.filter((item: Players) => item.posicao == "meio-campista")
+            const gole = jogadores.filter((item: Players) => item.posicao == "goleiro")
+
+
+
+            generateBoxPlayer(Ata, document.getElementById('groupSlides')!)
+            generateBoxPlayer(Def, document.getElementById('groupSlidesTwo')!)
+            generateBoxPlayer(mc, document.getElementById('groupSlidesThree')!)
+            generateBoxPlayer(gole, document.getElementById('groupSlidesFour')!)
 
         }
-    }
 
-        else if (idadeMin > idadeMa) {
-        alert('Idade Mínima está acima da Idade Máxima - Idade máxima por padrão é 100')
-        geral(0, 0, 100)
-        idadeMi.value = 0
-        idadeMax.value = 100
-    }
+        else if (idadeMin > idadeMa || idadeMin == idadeMa || isNaN(idadeMin) || isNaN(idadeMa)) {
+            alert('Informe valores coerentes - Os valores retornarão ao padrão')
+            geral(0, 0, 100)
+            idadeMi.value = "0"
+            idadeMax.value = "100"
+        }
 
+    }
 }
+information(0, 0, 100)
 
-geral(0, 0, 100)
 
-
-function generateBoxPlayer(pos, section) {
-    for (let index = 0; index < pos.length; index++) {
+function generateBoxPlayer(pos: Jogadores[], section: HTMLElement) {
+    for (let index: number = 0; index < pos.length; index++) {
         const Name = document.createElement('p')
         const idade = document.createElement('p')
         const Box = document.createElement('div')
@@ -85,8 +88,8 @@ function generateBoxPlayer(pos, section) {
 // --
 
 function removed() {
-    let TotalPlayers = document.getElementsByClassName('BoxPlayers')
-    for (let index = 0; index < TotalPlayers.length; index++) {
+    let TotalPlayers = document.getElementsByClassName('BoxPlayers') as HTMLCollection;
+    for (let index: number = 0; index < TotalPlayers.length; index++) {
         TotalPlayers[index].remove()
         index--
     }
