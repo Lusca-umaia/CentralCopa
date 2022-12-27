@@ -19,7 +19,7 @@ function geral(Remov, idadeMin, idadeMa) {
         if (Remov != 0) {
             removed();
         }
-        if (idadeMin < idadeMa) {
+        if (idadeMin < idadeMa && idadeMin != idadeMa) {
             //Filtrar apenas os jogadores da Argentina
             let jogadores = data.filter((item) => item.Selecao == "Argentina");
             // --
@@ -37,8 +37,8 @@ function geral(Remov, idadeMin, idadeMa) {
             generate(gole, document.getElementById('groupSlidesFour'));
             // --
         }
-        else if (idadeMin > idadeMa) {
-            alert('Idade Mínima está acima da Idade Máxima - Idade máxima por padrão é 100');
+        else if (idadeMin > idadeMa || idadeMin == idadeMa || isNaN(idadeMin) || isNaN(idadeMa)) {
+            alert('Informe valores coerentes - Os valores retornarão ao padrão');
             geral(0, 0, 100);
             idadeMi.value = "0";
             idadeMax.value = "100";
