@@ -1,151 +1,96 @@
-const SectionPlayer = document.querySelector('.Players')
-const NextButton = document.querySelector('.RightArrow')
-const MinAgeInput = document.querySelector('.MinimumAge')
-const MaxAgeInput = document.querySelector('.MaxAge')
+const idadeMi = document.getElementById('idadaMi') as HTMLInputElement;
+const idadeMax = document.getElementById('idadeMax') as HTMLInputElement;
 
-interface PlayerData extends Node {
-  team: string
-  name: string
-  year: string
-  role: string
-  urlImage: string
-  id: number
+idadeMi.addEventListener('blur', function () {
+    information(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
+})
+
+idadeMax.addEventListener('blur', function () {
+    information(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
+})
+
+interface Players {
+    nome: string,
+    idade: number,
+    url_img: string,
+    Selecao: string,
+    posicao: string,
 }
 
-interface arrayPlayersData extends Node { }
 
-let arrayPlayers: arrayPlayersData[] = []
-let nameArrayPlayers: string[] = []
+function information(Remov: number, idadeMin: number, idadeMa: number) {
+    fetch('https://apigenerator.dronahq.com/api/Ky18EWHd/Jogadores')
+        .then(function (reponse) {
+            return reponse.json()
+        })
+        .then(function (data) {
+            Jogadores(data)
+        })
 
-SectionPlayer?.addEventListener('mouseover', () => {
-  NextButton?.classList.remove('None')
-})
-
-SectionPlayer?.addEventListener('mouseout', () => {
-  setTimeout(() => NextButton?.classList.add('None'), 10000)
-})
-
-NextButton?.addEventListener('click', () => {
-  fetch("")
-    .then((data) => {
-      if (!data.ok) {
-        console.log(data)
-      }
-      return data.json()
-    })
-
-    .then((data) => {
-      let newPlayersList: string[] = []
-      const PlayerToBeRemove = document.querySelectorAll('.ContainerPlayer')
-
-      for (let index = 0; index < PlayerToBeRemove.length; index++) {
-        SectionPlayer?.removeChild(PlayerToBeRemove![index])
-        arrayPlayers.shift()
-      }
-
-      data.map((item: PlayerData) => {
-        if (nameArrayPlayers.includes(item.name) === false && item.name !== undefined) {
-          newPlayersList.push(item.name)
-
-          const CardPlayer = document.createElement('div')
-          CardPlayer.classList.add('ContainerPlayer')
-
-          const SrcPlayer = document.createElement('img')
-          SrcPlayer.src = item.urlImage
-          SrcPlayer.width = 150
-          CardPlayer.appendChild(SrcPlayer)
-
-          const NamePlayer = document.createElement('h4')
-          NamePlayer.textContent = item.name
-          NamePlayer.classList.add('PlayerName')
-          CardPlayer.appendChild(NamePlayer)
-
-          const AgePlayer = document.createElement('p')
-          AgePlayer.textContent = item.year
-          AgePlayer.classList.add('PlayerAge')
-          CardPlayer.appendChild(AgePlayer)
-
-          SectionPlayer?.appendChild(CardPlayer)
-          arrayPlayers.push(CardPlayer)
+    function Jogadores(data: Players) {
+        if (Remov != 0) {
+            removed()
         }
-      })
-    })
-})
 
-MinAgeInput?.addEventListener('blur', () => {
+        if (idadeMin < idadeMa && idadeMin != idadeMa) {
 
-  const arrayPlayersFiltered = arrayPlayers.filter((item) => {
-    if (MaxAgeInput?.value! === '') {
-      return item.lastChild?.textContent! >= MinAgeInput.value!
+            let jogadores = data.filter((item: Players) => item.Selecao == "Coreia")
+
+
+
+            jogadores = jogadores.filter((item: Players) => item.idade >= idadeMin && item.idade <= idadeMa)
+
+
+            const Ata = jogadores.filter((item: Players) => item.posicao == "atacante")
+            const Def = jogadores.filter((item: Players) => item.posicao == "defensor")
+            const mc = jogadores.filter((item: Players) => item.posicao == "meio-campista")
+            const gole = jogadores.filter((item: Players) => item.posicao == "goleiro")
+
+
+
+            generateBoxPlayer(Ata, document.getElementById('groupSlides')!)
+            generateBoxPlayer(Def, document.getElementById('groupSlidesTwo')!)
+            generateBoxPlayer(mc, document.getElementById('groupSlidesThree')!)
+            generateBoxPlayer(gole, document.getElementById('groupSlidesFour')!)
+
+        }
+
+        else if (idadeMin > idadeMa || idadeMin == idadeMa || isNaN(idadeMin) || isNaN(idadeMa)) {
+            alert('Informe valores coerentes - Os valores retornarão ao padrão')
+            geral(0, 0, 100)
+            idadeMi.value = "0"
+            idadeMax.value = "100"
+        }
+
     }
+}
+information(0, 0, 100)
 
-    return item.lastChild?.textContent! >= MinAgeInput.value! && item.lastChild?.textContent! <= MaxAgeInput?.value!
-  })
 
-  const PlayerToBeRemove = document.querySelectorAll('.ContainerPlayer')
+function generateBoxPlayer(pos: Jogadores[], section: HTMLElement) {
+    for (let index: number = 0; index < pos.length; index++) {
+        const Name = document.createElement('p')
+        const idade = document.createElement('p')
+        const Box = document.createElement('div')
+        const img = document.createElement('img')
 
-  for (let index = 0; index < PlayerToBeRemove.length; index++) {
-    SectionPlayer?.removeChild(PlayerToBeRemove![index])
-  }
+        Box.classList.add('BoxPlayers')
+        img.setAttribute('src', pos[index].url_img);
 
-  arrayPlayersFiltered.map((item) => {
-    SectionPlayer?.appendChild(item)
-  })
-})
-
-MaxAgeInput?.addEventListener('blur', () => {
-  const arrayPlayersFiltered = arrayPlayers.filter((item) => {
-    if (MaxAgeInput?.value! === '') {
-      return item.lastChild?.textContent! >= MinAgeInput.value!
+        Name.innerText = pos[index].nome
+        idade.innerText = pos[index].idade + " Anos"
+        Box.appendChild(img)
+        Box.appendChild(Name)
+        Box.appendChild(idade)
+        section.appendChild(Box)
     }
+}
+// --
 
-    return item.lastChild?.textContent! >= MinAgeInput.value! && item.lastChild?.textContent! <= MaxAgeInput?.value!
-  })
-
-  const PlayerToBeRemove = document.querySelectorAll('.ContainerPlayer')
-
-  for (let index = 0; index < PlayerToBeRemove.length; index++) {
-    SectionPlayer?.removeChild(PlayerToBeRemove![index])
-  }
-
-  arrayPlayersFiltered.map((item) => {
-    SectionPlayer?.appendChild(item)
-  })
-})
-
-fetch("")
-  .then((data) => {
-    if (!data.ok) {
-      console.log(data)
+function removed() {
+    let TotalPlayers = document.getElementsByClassName('BoxPlayers') as HTMLCollection;
+    for (let index: number = 0; index < TotalPlayers.length; index++) {
+        TotalPlayers[index].remove()
+        index--
     }
-    return data.json()
-  })
-
-  .then((data) => {
-    data.map((item: PlayerData) => {
-      if (item.id === 1) { return }
-
-      const CardPlayer = document.createElement('div')
-      CardPlayer.classList.add('ContainerPlayer')
-
-      const SrcPlayer = document.createElement('img')
-      SrcPlayer.src = item.urlImage
-      SrcPlayer.width = 150
-      CardPlayer.appendChild(SrcPlayer)
-
-      const NamePlayer = document.createElement('h4')
-      NamePlayer.textContent = item.name
-      NamePlayer.classList.add('PlayerName')
-      CardPlayer.appendChild(NamePlayer)
-
-      const AgePlayer = document.createElement('p')
-      AgePlayer.textContent = item.year
-      AgePlayer.classList.add('PlayerAge')
-      CardPlayer.appendChild(AgePlayer)
-
-      arrayPlayers.length < 5 && (arrayPlayers.push(CardPlayer), nameArrayPlayers.push(NamePlayer.textContent))
-      arrayPlayers.map((index: arrayPlayersData): void => {
-        SectionPlayer?.appendChild(index)
-      })
-    })
-  })
+}
