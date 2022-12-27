@@ -1,31 +1,32 @@
-var timeA = document.querySelectorAll(".timeA");
-var timeB = document.querySelectorAll(".timeB");
-var golA = document.querySelectorAll(".golA");
-var golB = document.querySelectorAll(".golB");
-var buttonMoreAbout = document.querySelector("#moreAbout");
-var qualifyingGames = document.querySelector(".qualifyingGames");
-var gameNone = document.querySelector(".gameNone");
+"use strict";
+const timeA = document.querySelectorAll(".timeA");
+const timeB = document.querySelectorAll(".timeB");
+const golA = document.querySelectorAll(".golA");
+const golB = document.querySelectorAll(".golB");
+const buttonMoreAbout = document.querySelector("#moreAbout");
+const qualifyingGames = document.querySelector(".qualifyingGames");
+const gameNone = document.querySelector(".gameNone");
 fetch("https://apigenerator.dronahq.com/api/zs9PYAhn/jogos")
-    .then(function (data) {
+    .then((data) => {
     if (!data.ok) {
         console.log(data);
     }
     return data.json();
 })
-    .then(function (data) {
-    var games = data.filter(function (element) {
+    .then((data) => {
+    const games = data.filter((element) => {
         if (element.timeA === "Coreia" || element.timeB === "Coreia") {
             return element;
         }
     });
-    games.forEach(function (element, index) {
+    games.forEach((element, index) => {
         timeA[index].textContent = element.timeA;
         timeB[index].textContent = element.timeB;
         golA[index].textContent = element.gols.timeA;
         golB[index].textContent = element.gols.TimeB;
     });
 });
-buttonMoreAbout === null || buttonMoreAbout === void 0 ? void 0 : buttonMoreAbout.addEventListener("click", function () {
+buttonMoreAbout?.addEventListener("click", () => {
     if (buttonMoreAbout.textContent === "Ver Menos") {
         buttonMoreAbout.textContent = "Ver Mais";
         gameNone.style.display = "none";
