@@ -1,12 +1,12 @@
-const idadeMi = document.getElementById('idadaMi') as HTMLInputElement;
-const idadeMax = document.getElementById('idadeMax') as HTMLInputElement;
+const ageMin = document.getElementById('ageMin') as HTMLInputElement;
+const ageMax = document.getElementById('ageMax') as HTMLInputElement;
 
-idadeMi.addEventListener('blur', function () {
-    information(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
+ageMin.addEventListener('blur', function () {
+    handleInformationPlayers(1, parseInt(ageMin.value), parseInt(ageMax.value))
 })
 
-idadeMax.addEventListener('blur', function () {
-    information(1, parseInt(idadeMi.value), parseInt(idadeMax.value))
+ageMax.addEventListener('blur', function () {
+    handleInformationPlayers(1, parseInt(ageMin.value), parseInt(ageMax.value))
 })
 
 interface Players {
@@ -18,17 +18,17 @@ interface Players {
 }
 
 
-function information(Remov: number, idadeMin: number, idadeMa: number) {
+function handleInformationPlayers(remove: number, idadeMin: number, idadeMa: number) {
     fetch('https://apigenerator.dronahq.com/api/Ky18EWHd/Jogadores')
         .then(function (reponse) {
             return reponse.json()
         })
         .then(function (data) {
-            Jogadores(data)
+            handlePlayers(data)
         })
 
-    function Jogadores(data: Players) {
-        if (Remov != 0) {
+    function handlePlayers(data: Players) {
+        if (remove != 0) {
             removed()
         }
 
@@ -48,41 +48,41 @@ function information(Remov: number, idadeMin: number, idadeMa: number) {
 
 
 
-            generateBoxPlayer(Ata, document.getElementById('groupSlides')!)
-            generateBoxPlayer(Def, document.getElementById('groupSlidesTwo')!)
-            generateBoxPlayer(mc, document.getElementById('groupSlidesThree')!)
-            generateBoxPlayer(gole, document.getElementById('groupSlidesFour')!)
+            generateBoxPlayer(Ata, document.getElementById('playersAta')!)
+            generateBoxPlayer(Def, document.getElementById('playersDef')!)
+            generateBoxPlayer(mc, document.getElementById('playersMc')!)
+            generateBoxPlayer(gole, document.getElementById('playersAtaGole')!)
 
         }
 
         else if (idadeMin > idadeMa || idadeMin == idadeMa || isNaN(idadeMin) || isNaN(idadeMa)) {
             alert('Informe valores coerentes - Os valores retornarão ao padrão')
-            geral(0, 0, 100)
-            idadeMi.value = "0"
-            idadeMax.value = "100"
+            handleInformationPlayers(0, 0, 100)
+            ageMin.value = "0"
+            ageMax.value = "100"
         }
 
     }
 }
-information(0, 0, 100)
+handleInformationPlayers(0, 0, 100)
 
 
-function generateBoxPlayer(pos: Jogadores[], section: HTMLElement) {
+function generateBoxPlayer(pos: Players[], section: HTMLElement) {
     for (let index: number = 0; index < pos.length; index++) {
-        const Name = document.createElement('p')
-        const idade = document.createElement('p')
-        const Box = document.createElement('div')
+        const name = document.createElement('p')
+        const age = document.createElement('p')
+        const box = document.createElement('div')
         const img = document.createElement('img')
 
-        Box.classList.add('BoxPlayers')
+        box.classList.add('BoxPlayers')
         img.setAttribute('src', pos[index].url_img);
 
-        Name.innerText = pos[index].nome
-        idade.innerText = pos[index].idade + " Anos"
-        Box.appendChild(img)
-        Box.appendChild(Name)
-        Box.appendChild(idade)
-        section.appendChild(Box)
+        name.innerText = pos[index].nome
+        age.innerText = pos[index].idade + " Anos"
+        box.appendChild(img)
+        box.appendChild(name)
+        box.appendChild(age)
+        section.appendChild(box)
     }
 }
 // --

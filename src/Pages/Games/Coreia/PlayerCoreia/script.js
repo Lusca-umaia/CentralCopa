@@ -1,20 +1,20 @@
-var idadeMi = document.getElementById('idadaMi');
-var idadeMax = document.getElementById('idadeMax');
-idadeMi.addEventListener('blur', function () {
-    information(1, parseInt(idadeMi.value), parseInt(idadeMax.value));
+var ageMin = document.getElementById('ageMin');
+var ageMax = document.getElementById('ageMax');
+ageMin.addEventListener('blur', function () {
+    handleInformationPlayers(1, parseInt(ageMin.value), parseInt(ageMax.value));
 });
-idadeMax.addEventListener('blur', function () {
-    information(1, parseInt(idadeMi.value), parseInt(idadeMax.value));
+ageMax.addEventListener('blur', function () {
+    handleInformationPlayers(1, parseInt(ageMin.value), parseInt(ageMax.value));
 });
-function information(Remov, idadeMin, idadeMa) {
+function handleInformationPlayers(Remov, idadeMin, idadeMa) {
     fetch('https://apigenerator.dronahq.com/api/Ky18EWHd/Jogadores')
         .then(function (reponse) {
         return reponse.json();
     })
         .then(function (data) {
-        Jogadores(data);
+        handlePlayers(data);
     });
-    function Jogadores(data) {
+    function handlePlayers(data) {
         if (Remov != 0) {
             removed();
         }
@@ -25,34 +25,34 @@ function information(Remov, idadeMin, idadeMa) {
             var Def = jogadores.filter(function (item) { return item.posicao == "defensor"; });
             var mc = jogadores.filter(function (item) { return item.posicao == "meio-campista"; });
             var gole = jogadores.filter(function (item) { return item.posicao == "goleiro"; });
-            generateBoxPlayer(Ata, document.getElementById('groupSlides'));
-            generateBoxPlayer(Def, document.getElementById('groupSlidesTwo'));
-            generateBoxPlayer(mc, document.getElementById('groupSlidesThree'));
-            generateBoxPlayer(gole, document.getElementById('groupSlidesFour'));
+            generateBoxPlayer(Ata, document.getElementById('playersAta'));
+            generateBoxPlayer(Def, document.getElementById('playersDef'));
+            generateBoxPlayer(mc, document.getElementById('playersMc'));
+            generateBoxPlayer(gole, document.getElementById('playersAtaGole'));
         }
         else if (idadeMin > idadeMa || idadeMin == idadeMa || isNaN(idadeMin) || isNaN(idadeMa)) {
             alert('Informe valores coerentes - Os valores retornarão ao padrão');
-            geral(0, 0, 100);
-            idadeMi.value = "0";
-            idadeMax.value = "100";
+            handleInformationPlayers(0, 0, 100);
+            ageMin.value = "0";
+            ageMax.value = "100";
         }
     }
 }
-information(0, 0, 100);
+handleInformationPlayers(0, 0, 100);
 function generateBoxPlayer(pos, section) {
     for (var index = 0; index < pos.length; index++) {
-        var Name = document.createElement('p');
-        var idade = document.createElement('p');
-        var Box = document.createElement('div');
+        var name_1 = document.createElement('p');
+        var age = document.createElement('p');
+        var box = document.createElement('div');
         var img = document.createElement('img');
-        Box.classList.add('BoxPlayers');
+        box.classList.add('BoxPlayers');
         img.setAttribute('src', pos[index].url_img);
-        Name.innerText = pos[index].nome;
-        idade.innerText = pos[index].idade + " Anos";
-        Box.appendChild(img);
-        Box.appendChild(Name);
-        Box.appendChild(idade);
-        section.appendChild(Box);
+        name_1.innerText = pos[index].nome;
+        age.innerText = pos[index].idade + " Anos";
+        box.appendChild(img);
+        box.appendChild(name_1);
+        box.appendChild(age);
+        section.appendChild(box);
     }
 }
 // --

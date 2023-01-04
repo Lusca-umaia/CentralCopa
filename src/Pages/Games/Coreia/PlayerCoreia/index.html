@@ -27,27 +27,28 @@
       <a href="../../../RegisterPlayer/index.html">Cadastrar</a>
     </div>
   </nav>
-  <section class="containerOne">
+  
+  <main>
+  <section class="containerSelection">
     <div class="groupSele">
       <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" width="200px">
       <h2>Coreia</h2>
     </div>
     <div class="Idade">
       <h2>Filtrar por idade</h2>
-      <div class="groupInput">
-        <div class="inputBox">
-          <label for="">Idade Mínima</label>
-          <input type="number" id="idadaMi" value="0">
+      <div class="containerFilterAgePlayers">
+        <div class="inputFilterAgePlayers">
+          <label for="ageMin">Idade Mínima</label>
+          <input type="number" id="idadaMinima" value="0">
         </div>
-        <div class="inputBox">
-          <label for="">Idade Máxima</label>
+        <div class="inputFilterAgePlayers">
+          <label for="ageMin">Idade Máxima</label>
           <input type="number" id="idadeMax" value="100">
         </div>
       </div>
     </div>
   </section>
-  <main>
-    <section class="styleSection">
+    <section class="players">
       <h2>Atacantes</h2>
       <button class="ret" id="retAta">
         <span class="material-symbols-outlined">
@@ -55,7 +56,7 @@
         </span>
       </button>
       <div id="ContSlider" class="sliders">
-        <section id="groupSlides" class="styleGroup">
+        <section id="playersAta" class="styleGroup">
         </section>
       </div>
       <button class="avan" id="avanAta">
@@ -64,7 +65,7 @@
         </span>
       </button>
     </section>
-    <section class="styleSection">
+    <section class="players">
       <h2>Defensores</h2>
       <div id="ContSlider" class="sliders">
         <button class="ret" id="retDef">
@@ -72,7 +73,7 @@
             arrow_back_ios
           </span>
         </button>
-        <section id="groupSlidesTwo" class="styleGroup">
+        <section id="playersDef" class="styleGroup">
         </section>
         <button class="avan" id="avanDef">
           <span class="material-symbols-outlined">
@@ -81,7 +82,7 @@
         </button>
       </div>
     </section>
-    <section class="styleSection">
+    <section class="players">
       <h2>Meio Campistas</h2>
       <div id="ContSlider" class="sliders">
         <button class="ret" id="retMc">
@@ -89,7 +90,7 @@
             arrow_back_ios
           </span>
         </button>
-        <section id="groupSlidesThree" class="styleGroup">
+        <section id="playersMc" class="styleGroup">
         </section>
         <button class="avan" id="avanMc">
           <span class="material-symbols-outlined">
@@ -98,7 +99,7 @@
         </button>
       </div>
     </section>
-    <section class="styleSection">
+    <section class="players">
       <h2>Goleiros</h2>
       <div id="ContSlider" class="sliders">
         <button class="ret" id="retGole">
@@ -106,7 +107,7 @@
             arrow_back_ios
           </span>
         </button>
-        <section id="groupSlidesFour" class="styleGroup">
+        <section id="playersGole" class="styleGroup">
         </section>
         <button class="avan" id="avanGole">
           <span class="material-symbols-outlined">
