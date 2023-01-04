@@ -1,45 +1,40 @@
 //Chamando as funções de acordo com a categoria
-document.getElementById('avanAta')!.addEventListener('click', function () {
-    Avan(0)
-})
-
-document.getElementById('retAta')!.addEventListener('click', function () {
-    ret(0)
-})
-
-document.getElementById('avanDef')!.addEventListener('click', function () {
-    Avan(1)
-})
-
-document.getElementById('retDef')!.addEventListener('click', function () {
-    ret(1)
-})
-
-document.getElementById('avanMc')!.addEventListener('click', function () {
-    Avan(2)
-})
-
-document.getElementById('retMc')!.addEventListener('click', function () {
-    ret(2)
-})
-
-document.getElementById('avanGole')!.addEventListener('click', function () {
-    Avan(3)
-})
-
-document.getElementById('retGole')!.addEventListener('click', function () {
-    ret(3)
-})
+"use strict";
+//Chamando as funções de acordo com a categoria
+document.getElementById('ArrowRightAta')!.addEventListener('click', function () {
+    avance(0);
+});
+document.getElementById('ArrowLeftAta')!.addEventListener('click', function () {
+    return_(0);
+});
+document.getElementById('ArrowRightDef')!.addEventListener('click', function () {
+    avance(1);
+});
+document.getElementById('ArrowLeftDef')!.addEventListener('click', function () {
+    return_(1);
+});
+document.getElementById('ArrowRightMc')!.addEventListener('click', function () {
+    avance(2);
+});
+document.getElementById('ArrowLeftMc')!.addEventListener('click', function () {
+    return_(2);
+});
+document.getElementById('ArrowRightGk')!.addEventListener('click', function () {
+    avance(3);
+});
+document.getElementById('ArrowLeftGk')!.addEventListener('click', function () {
+    return_(3);
+});
 // --
 
 //Função "Avançar" - carousel
-function Avan(ind: number) {
+function avance(ind: number) {
     document.getElementsByClassName('sliders')[ind].scrollLeft += 200
 }
 // --
 
 //Função "Retornar" - carousel
-function ret(ind: number) {
+function return_(ind: number) {
     document.getElementsByClassName('sliders')[ind].scrollLeft -= 200
 }
 // --

@@ -1,4 +1,4 @@
-let menu = document.getElementById("menuu") as HTMLDivElement;
+let menu = document.getElementById("menu") as HTMLDivElement;
 let Nav = document.getElementById('nav') as HTMLElement;
 let control: number = 0;
 

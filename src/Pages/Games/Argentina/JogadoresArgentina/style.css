@@ -5,7 +5,7 @@
     margin: 0;
 }
 
-main {
+.main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,7 +47,7 @@ main {
     align-items: center;
 }
 
-.Idade {
+.boxFilter {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +58,7 @@ main {
     display: flex;
 }
 
-#ContSlider {
+.sliders {
     width: 70vw;
     display: flex;
     cursor: pointer;
@@ -67,7 +67,7 @@ main {
     overflow-x: scroll;
 }
 
-#ContSlider::-webkit-scrollbar {
+.sliders::-webkit-scrollbar {
     display: none;
 }
 
@@ -101,7 +101,7 @@ main {
     transform: scale(1.07);
 }
 
-.ret {
+.return_ {
     position: absolute;
     padding: 5px;
     outline: none;
@@ -113,32 +113,32 @@ main {
     z-index: 2;
 }
 
-.ret span {
+.return_ span {
     font-size: 50px;
     color: transparent;
     transition: 0.4s all;
 }
 
-.ret span:hover {
+.return_ span:hover {
     color: black;
     transform: scale(1.5);
     font-size: 50px;
 }
 
-.avan span {
+.avance span {
     color: transparent;
     transition: 0.4s all;
     font-size: 50px;
 }
 
 
-.avan span:hover {
+.avance span:hover {
     transform: scale(1.5);
     color: black;
     font-size: 50px;
 }
 
-.avan {
+.avance {
     position: absolute;
     padding: 5px;
     top: 50%;

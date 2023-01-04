@@ -1,5 +1,5 @@
 "use strict";
-let menu = document.getElementById("menuu");
+let menu = document.getElementById("menu");
 let Nav = document.getElementById('nav');
 let control = 0;
 function controle() {

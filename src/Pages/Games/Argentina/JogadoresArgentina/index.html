@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Players Argentina</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./style.css">
@@ -15,13 +15,13 @@
     <nav id="nav">
         <div class="agroupNav">
             <img src="../../../../assets/logoFlit.png" alt="" height="60px" />
-            <div class="menu" id="menuu">
+            <div class="menu" id="menu">
                 <div class="line"></div>
                 <div class="line"></div>
                 <div class="line"></div>
             </div>
         </div>
-        <div class="Direc" id="direc">
+        <div class="Direct">
             <a href="../../../HomePage/index.html">Home</a>
             <a href="../../Coreia/GamesCoreia/index.html">Jogos</a>
             <a href="../../../RegisterPlayer/index.html">Cadastrar</a>
@@ -32,33 +32,33 @@
             <img src="https://imagepng.org/wp-content/uploads/2017/10/bandeira-argentina.png" width="200px">
             <h2>Argentina</h2>
         </div>
-        <div class="Idade">
+        <div class="boxFilter">
             <h2>Filtrar por idade</h2>
             <div class="groupInput">
                 <div class="inputBox">
-                    <label for="">Idade Mínima</label>
-                    <input type="number" id="idadaMi" value="0">
+                    <label for="ageMin">Idade Mínima</label>
+                    <input type="number" id="ageMin" value="0">
                 </div>
                 <div class="inputBox">
-                    <label for="">Idade Máxima</label>
-                    <input type="number" id="idadeMax" value="100">
+                    <label for="ageMax">Idade Máxima</label>
+                    <input type="number" id="ageMax" value="100">
                 </div>
             </div>
         </div>
     </section>
-    <main>
+    <section class="main">
         <section class="styleSection">
             <h2>Atacantes</h2>
-            <button class="ret" id="retAta">
+            <button class="return_" id="ArrowLeftAta">
                 <span class="material-symbols-outlined">
                     arrow_back_ios
                 </span>
             </button>
-            <div id="ContSlider" class="sliders">
+            <div class="sliders">
                 <section id="groupSlides" class="styleGroup">
                 </section>
             </div>
-            <button class="avan" id="avanAta">
+            <button class="avance" id="ArrowRightAta">
                 <span class="material-symbols-outlined">
                     arrow_forward_ios
                 </span>
@@ -66,15 +66,15 @@
         </section>
         <section class="styleSection">
             <h2>Defensores</h2>
-            <div id="ContSlider" class="sliders">
-                <button class="ret" id="retDef">
+            <div class="sliders">
+                <button class="return_" id="ArrowLeftDef">
                     <span class="material-symbols-outlined">
                         arrow_back_ios
                     </span>
                 </button>
                 <section id="groupSlidesTwo" class="styleGroup">
                 </section>
-                <button class="avan" id="avanDef">
+                <button class="avance" id="ArrowRightDef">
                     <span class="material-symbols-outlined">
                         arrow_forward_ios
                     </span>
@@ -83,15 +83,15 @@
         </section>
         <section class="styleSection">
             <h2>Meio Campistas</h2>
-            <div id="ContSlider" class="sliders">
-                <button class="ret" id="retMc">
+            <div class="sliders">
+                <button class="return_" id="ArrowLeftMc">
                     <span class="material-symbols-outlined">
                         arrow_back_ios
                     </span>
                 </button>
                 <section id="groupSlidesThree" class="styleGroup">
                 </section>
-                <button class="avan" id="avanMc">
+                <button class="avance" id="ArrowRightMc">
                     <span class="material-symbols-outlined">
                         arrow_forward_ios
                     </span>
@@ -100,25 +100,25 @@
         </section>
         <section class="styleSection">
             <h2>Goleiros</h2>
-            <div id="ContSlider" class="sliders">
-                <button class="ret" id="retGole">
+            <div class="sliders">
+                <button class="return_" id="ArrowLeftGk">
                     <span class="material-symbols-outlined">
                         arrow_back_ios
                     </span>
                 </button>
                 <section id="groupSlidesFour" class="styleGroup">
                 </section>
-                <button class="avan" id="avanGole">
+                <button class="avance" id="ArrowRightGk">
                     <span class="material-symbols-outlined">
                         arrow_forward_ios
                     </span>
                 </button>
             </div>
         </section>
-    </main>
+    </section>
     <script src="../../../../JS/Nav.js"></script>
     <script src="./carousel.js"></script>
-    <script src="./logic.js"></script>
+    <script src="./GeneratePlayers.js"></script>
 </body>
 
 </html>

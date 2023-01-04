@@ -9,21 +9,21 @@ body {
     background-color: #eee;
 }
 
-#cont {
+#container {
     margin: 20px 0;
     display: flex;
     gap: 40px;
     flex-direction: column;
 }
 
-.campNav {
+.navigation {
     width: 100%;
     justify-content: space-around;
     margin: 20px auto;
     display: flex;
 }
 
-.buttonDire {
+.buttonDirect {
     background-color: #042940;
     color: white;
     font-size: 1em;
@@ -35,29 +35,29 @@ body {
     width: 180px;
 }
 
-.groupTeam {
+.Team {
     gap: 10px;
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.groupTeam img {
+.Team img {
     border-radius: 20px;
 }
 
-.groupDivisor {
+.targetingPlayers {
     display: flex;
     gap: 10px;
     align-items: center;
     flex-direction: column;
 }
 
-.groupDivisor h3 {
+.targetingPlayers h3 {
     font-size: 1.3em;
 }
 
-.buttonDire:hover {
+.buttonDirect:hover {
     background-color: transparent;
     color: black;
 }
@@ -102,7 +102,7 @@ body {
     font-weight: bold;
 }
 
-#classi {
+#qualifying {
     width: 75%;
     margin: 0 auto;
     display: flex;
@@ -116,13 +116,13 @@ body {
     justify-content: center;
 }
 
-#contClassi {
+#contQualifying {
     display: flex;
     justify-content: center;
     gap: 120px;
 }
 
-#contCollaps {
+#matchCollaps {
     order: 1;
     display: none;
 }
@@ -169,7 +169,7 @@ body {
         gap: 35px;
     }
 
-    #classi {
+    #qualifying {
         width: 90%;
     }
 }

@@ -1,6 +1,6 @@
-
-var idadeMi = document.getElementById('idadaMi');
-var idadeMax = document.getElementById('idadeMax');
+"use strict";
+const idadeMi = document.getElementById('idadaMi');
+const idadeMax = document.getElementById('idadeMax');
 idadeMi.addEventListener('blur', function () {
     information(1, parseInt(idadeMi.value), parseInt(idadeMax.value));
 });
@@ -20,12 +20,12 @@ function information(Remov, idadeMin, idadeMa) {
             removed();
         }
         if (idadeMin < idadeMa && idadeMin != idadeMa) {
-            var jogadores = data.filter(function (item) { return item.Selecao == "Coreia"; });
-            jogadores = jogadores.filter(function (item) { return item.idade >= idadeMin && item.idade <= idadeMa; });
-            var Ata = jogadores.filter(function (item) { return item.posicao == "atacante"; });
-            var Def = jogadores.filter(function (item) { return item.posicao == "defensor"; });
-            var mc = jogadores.filter(function (item) { return item.posicao == "meio-campista"; });
-            var gole = jogadores.filter(function (item) { return item.posicao == "goleiro"; });
+            let jogadores = data.filter((item) => item.Selecao == "Coreia");
+            jogadores = jogadores.filter((item) => item.idade >= idadeMin && item.idade <= idadeMa);
+            const Ata = jogadores.filter((item) => item.posicao == "atacante");
+            const Def = jogadores.filter((item) => item.posicao == "defensor");
+            const mc = jogadores.filter((item) => item.posicao == "meio-campista");
+            const gole = jogadores.filter((item) => item.posicao == "goleiro");
             generateBoxPlayer(Ata, document.getElementById('groupSlides'));
             generateBoxPlayer(Def, document.getElementById('groupSlidesTwo'));
             generateBoxPlayer(mc, document.getElementById('groupSlidesThree'));
@@ -41,11 +41,11 @@ function information(Remov, idadeMin, idadeMa) {
 }
 information(0, 0, 100);
 function generateBoxPlayer(pos, section) {
-    for (var index = 0; index < pos.length; index++) {
-        var Name = document.createElement('p');
-        var idade = document.createElement('p');
-        var Box = document.createElement('div');
-        var img = document.createElement('img');
+    for (let index = 0; index < pos.length; index++) {
+        const Name = document.createElement('p');
+        const idade = document.createElement('p');
+        const Box = document.createElement('div');
+        const img = document.createElement('img');
         Box.classList.add('BoxPlayers');
         img.setAttribute('src', pos[index].url_img);
         Name.innerText = pos[index].nome;
@@ -58,8 +58,8 @@ function generateBoxPlayer(pos, section) {
 }
 // --
 function removed() {
-    var TotalPlayers = document.getElementsByClassName('BoxPlayers');
-    for (var index = 0; index < TotalPlayers.length; index++) {
+    let TotalPlayers = document.getElementsByClassName('BoxPlayers');
+    for (let index = 0; index < TotalPlayers.length; index++) {
         TotalPlayers[index].remove();
         index--;
     }
